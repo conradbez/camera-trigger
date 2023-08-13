@@ -1,0 +1,74 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo with Bluetooth Headphones</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        .download-btn,
+        .ready-btn,
+        .flip-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center
+        }
+
+        .images-container img {
+            margin: 5px;
+            border: 1px solid #ccc
+        }
+
+        .image-item {
+            display: inline-block;
+            margin: 10px
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px
+        }
+
+        .instructions {
+            font-size: .9em;
+            margin-top: 10px;
+            color: #666
+        }
+    </style>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1119.0" data-gr-ext-installed="">
+    <div id="poweredBy"
+        style="position: fixed; right: 0; bottom: 0; background-color: #0078D7; color: white; padding: 10px; z-index: 1000; border-top-left-radius: 10px; font-family: Roboto, sans-serif;">
+        <span class="info-icon" style="margin-right: 5px; font-size: 1.2em;">ℹ</span> Powered by <b><a
+                href="https://converter.app" style="color: white;" target="_blank">Converter App</a></b>
+    </div>
+    <header>
+        <h1>Photo with Bluetooth Headphones</h1>
+        <button id="readyBtn" class="ready-btn">Ready</button>
+        <p class="instructions">Now press play/pause on your headphones to capture a photo (note: for Airpods, at least
+            one Airpod needs to be in your ear).</p>
+    </header>
+    <main class="container">
+        <section>
+            <h2>Live Camera Preview</h2>
+            <video id="livePreview" width="300" autoplay=""></video>
+            <button id="flipBtn" class="flip-btn">Flip Camera</button>
+            <div class="images-container" id="imagesContainer"></div>
+        </section>
+    </main>
+    <footer>
+        <p>Created with PicoCSS</p>
+    </footer>
+    <script>const audioElement = document.createElement('audio'); audioElement.src = 'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3'; document.body.appendChild(audioElement); const videoElement = document.getElementById('livePreview'); const imagesContainer = document.getElementById('imagesContainer'); const readyBtn = document.getElementById('readyBtn'); const flipBtn = document.getElementById('flipBtn'); let isFirstPlay = true; let useFrontCamera = true; function startCamera(front = true) { navigator.mediaDevices.getUserMedia({ video: { facingMode: front ? 'user' : 'environment' } }).then(stream => { videoElement.srcObject = stream; }).catch(error => { console.error("Error accessing the camera:", error); }); } function captureImage() { const canvas = document.createElement('canvas'); canvas.width = videoElement.videoWidth; canvas.height = videoElement.videoHeight; const ctx = canvas.getContext('2d'); ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height); const imageUrl = canvas.toDataURL('image/png'); const imgElement = new Image(); imgElement.src = imageUrl; const downloadLink = document.createElement('a'); downloadLink.href = imageUrl; downloadLink.download = 'captured_image.png'; downloadLink.innerText = 'Download'; downloadLink.className = 'download-btn'; const imageItem = document.createElement('div'); imageItem.className = 'image-item'; imageItem.appendChild(imgElement); imageItem.appendChild(downloadLink); imagesContainer.appendChild(imageItem); } audioElement.addEventListener('play', function () { if (!isFirstPlay) { console.log('Audio started playing'); captureImage(); } else { isFirstPlay = false; } }); audioElement.addEventListener('pause', function () { console.log('Audio paused'); captureImage(); }); startCamera(); flipBtn.addEventListener('click', function () { useFrontCamera = !useFrontCamera; startCamera(useFrontCamera); }); readyBtn.addEventListener('click', function () { audioElement.play(); });</script>
+    <audio
+        src="http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"></audio>
+
+</body>
