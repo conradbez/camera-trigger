@@ -45,14 +45,17 @@
 </head>
 
 <body>
+    <header class="container">
     <header>
         <h1>Photo with Bluetooth Headphones</h1>
-        <button id="readyBtn" class="ready-btn">Ready</button>
-        <p class="instructions">Now press play/pause on your headphones to capture a photo (note: for Airpods, at least
-            one Airpod needs to be in your ear).</p>
     </header>
     <main class="container">
         <section>
+            Turn your phone media audio low
+            then press "Ready"
+            <button id="readyBtn" class="ready-btn">Ready</button>
+            <p class="instructions">Now press play/pause on your headphones to capture a photo (note: for Airpods, at least
+                one Airpod needs to be in your ear).</p>
             <h2>Live Camera Preview</h2>
             <video id="livePreview" width="300" autoplay=""></video>
             <button id="flipBtn" class="flip-btn">Flip Camera</button>
@@ -60,7 +63,7 @@
         </section>
     </main>
     <footer>
-        <p>Created with PicoCSS</p>
+        <p>Created with help of GPT4 and the Pico.css framework</p>
     </footer>
     <script>
         const audioElement = document.createElement("audio");
@@ -124,7 +127,8 @@
             audioElement.play();
         });
         readyBtn.addEventListener("click", function () {
-            audioElement.muted = true;
+            // audioElement.muted = true;
+            console.log(audioElement)
         });
 
     </script>
