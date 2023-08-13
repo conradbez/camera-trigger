@@ -22,8 +22,11 @@
                 one Airpod needs to be in your ear).</p>
             <h2>Live Camera Preview</h2>
             <!-- <video id="livePreview" width="300" playsinline></video> try to fix preview not working on iPhone -->
-            <video id="livePreview" width="300" autoplay=""></video>
-            <button id="flipBtn" class="flip-btn">Flip Camera</button>
+            <article>
+                <video id="livePreview" width="100%" autoplay=""></video>
+            </article>
+            <button id="flipBtn">Flip Camera</button>
+            <button onclick="captureImage()">Take Photo</button>
             <div class="images-container" id="imagesContainer"></div>
         </section>
     </main>
