@@ -63,13 +63,11 @@
             const imageUrl = canvas.toDataURL("image/png");
             const imgElement = new Image();
             imgElement.src = imageUrl;
-            const downloadLink = document.createElement("a");
+            const downloadLink = document.createElement("button");
             downloadLink.href = imageUrl;
             downloadLink.download = "captured_image.png";
             downloadLink.innerText = "Download";
-            downloadLink.className = "download-btn";
-            const imageItem = document.createElement("div");
-            imageItem.className = "image-item";
+            const imageItem = document.createElement("article");
             imageItem.appendChild(imgElement);
             imageItem.appendChild(downloadLink);
             imagesContainer.appendChild(imageItem);
@@ -95,8 +93,7 @@
             audioElement.play();
         });
         readyBtn.addEventListener("click", function () {
-            // audioElement.muted = true; // seems to break everything for some reason
-            // console.log(audioElement)
+            audioElement.muted = true; // seems to break everything for some reason
         });
 
     </script>
