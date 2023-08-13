@@ -63,6 +63,7 @@
             const imageUrl = canvas.toDataURL("image/png");
             const imgElement = new Image();
             imgElement.src = imageUrl;
+            imgElement.style = "width:100%"
             const downloadLink = document.createElement("button");
             downloadLink.href = imageUrl;
             downloadLink.download = "captured_image.png";
