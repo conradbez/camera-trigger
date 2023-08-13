@@ -1,72 +1,70 @@
 <html lang="en">
+    <head>
 
-<head>
-    <meta charset="UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo with Bluetooth Headphones</title>
+    <meta name="description" content="Capture photos with Bluetooth headphones.">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <style>
-        .download-btn,
-        .ready-btn,
-        .flip-btn {
+        .btn {
             display: block;
             margin: 10px 0;
             padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
             background-color: #007bff;
             color: #fff;
             text-decoration: none;
-            border-radius: 5px;
-            text-align: center
         }
 
         .images-container img {
             margin: 5px;
-            border: 1px solid #ccc
+            border: 1px solid #ccc;
         }
 
         .image-item {
             display: inline-block;
-            margin: 10px
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px
+            margin: 10px;
         }
 
         .instructions {
             font-size: .9em;
             margin-top: 10px;
-            color: #666
+            color: #666;
         }
     </style>
 </head>
 
-<body data-new-gr-c-s-check-loaded="14.1119.0" data-gr-ext-installed="">
-    <div id="poweredBy"
-        style="position: fixed; right: 0; bottom: 0; background-color: #0078D7; color: white; padding: 10px; z-index: 1000; border-top-left-radius: 10px; font-family: Roboto, sans-serif;">
-        <span class="info-icon" style="margin-right: 5px; font-size: 1.2em;">ℹ</span> Powered by <b><a
-                href="https://converter.app" style="color: white;" target="_blank">Converter App</a></b>
-    </div>
-    <header>
-        <h1>Photo with Bluetooth Headphones</h1>
-        <button id="readyBtn" class="ready-btn">Ready</button>
-        <p class="instructions">Now press play/pause on your headphones to capture a photo (note: for Airpods, at least
-            one Airpod needs to be in your ear).</p>
+<body>
+    <header class="container">
+        <hgroup>
+            <h1>Photo with Bluetooth Headphones</h1>
+            <h2>Press play/pause on your headphones to capture a photo.</h2>
+        </hgroup>
+        <button id="readyBtn" class="btn btn-primary">Ready</button>
+        <p class="instructions">Note: For Airpods, at least one Airpod needs to be in your ear.</p>
     </header>
+
     <main class="container">
         <section>
             <h2>Live Camera Preview</h2>
             <video id="livePreview" width="300" autoplay=""></video>
-            <button id="flipBtn" class="flip-btn">Flip Camera</button>
+            <button id="flipBtn" class="btn btn-primary">Flip Camera</button>
             <div class="images-container" id="imagesContainer"></div>
         </section>
     </main>
-    <footer>
-        <p>Created with PicoCSS</p>
+
+    <footer class="container">
+        <small>Created with PicoCSS</small>
+        <div id="poweredBy" style="position: fixed; right: 0; bottom: 0; background-color: #0078D7; color: white; padding: 10px; z-index: 1000; border-top-left-radius: 10px; font-family: Roboto, sans-serif;">
+            <span class="info-icon" style="margin-right: 5px; font-size: 1.2em;">ℹ</span> Powered by <b><a href="https://converter.app" style="color: white;" target="_blank">Converter App</a></b>
+        </div>
     </footer>
+
     <script>
         const audioElement = document.createElement("audio");
         audioElement.src =
@@ -128,11 +126,13 @@
         readyBtn.addEventListener("click", function () {
             audioElement.play();
         });
+
         readyBtn.addEventListener("click", function () {
             audioElement.muted = true;
         });
 
     </script>
+
     <audio
         src="http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"></audio>
 
