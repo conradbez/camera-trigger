@@ -4,44 +4,8 @@
     <meta charset="UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo with Bluetooth Headphones</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    <style>
-        .download-btn,
-        .ready-btn,
-        .flip-btn {
-            display: block;
-            margin: 10px 0;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            text-align: center
-        }
-
-        .images-container img {
-            margin: 5px;
-            border: 1px solid #ccc
-        }
-
-        .image-item {
-            display: inline-block;
-            margin: 10px
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px
-        }
-
-        .instructions {
-            font-size: .9em;
-            margin-top: 10px;
-            color: #666
-        }
-    </style>
+    <title>Photo with Bluetooth Headphones</title>
 </head>
 
 <body>
@@ -57,6 +21,7 @@
             <p class="instructions">Now press play/pause on your headphones to capture a photo (note: for Airpods, at least
                 one Airpod needs to be in your ear).</p>
             <h2>Live Camera Preview</h2>
+            <!-- <video id="livePreview" width="300" playsinline></video> try to fix preview not working on iPhone -->
             <video id="livePreview" width="300" autoplay=""></video>
             <button id="flipBtn" class="flip-btn">Flip Camera</button>
             <div class="images-container" id="imagesContainer"></div>
@@ -68,7 +33,7 @@
     <script>
         const audioElement = document.createElement("audio");
         audioElement.src =
-            "http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3";
+            "https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3";
         document.body.appendChild(audioElement);
         const videoElement = document.getElementById("livePreview");
         const imagesContainer = document.getElementById("imagesContainer");
@@ -127,12 +92,12 @@
             audioElement.play();
         });
         readyBtn.addEventListener("click", function () {
-            // audioElement.muted = true;
-            console.log(audioElement)
+            // audioElement.muted = true; // seems to break everything for some reason
+            // console.log(audioElement)
         });
 
     </script>
     <audio
-        src="http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"></audio>
+        src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"></audio>
 
 </body>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Camera Preview</title>
+</head>
+<body>
+    <h2>Live Camera Preview</h2>
+    <video id="livePreview" width="300" autoplay></video>
+    <button id="captureBtn">Capture</button>
+    <img id="capturedImage" alt="Captured image" width="300">
+
+    <script>
+        const videoElement = document.getElementById('livePreview');
+        const captureBtn = document.getElementById('captureBtn');
+        const capturedImage = document.getElementById('capturedImage');
+
+        // Access the camera and stream to video element
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                videoElement.srcObject = stream;
+            })
+            .catch(error => {
+                console.error("Error accessing the camera:", error);
+            });
+
+        captureBtn.addEventListener('click', function() {
+            const canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+            capturedImage.src = canvas.toDataURL('image/png');
+        });
+    </script>
+</body>
+</html>
