@@ -9,11 +9,11 @@
 </head>
 
 <body>
+    <main class="container">
+
     <header class="container">
-        <header>
-            <h1>Photo with Bluetooth Headphones</h1>
+            <h3>Remote Photo Trigger with Bluetooth Headphones</h3>
         </header>
-        <main class="container">
             <section>
                     <details>
                         <summary>Need to take a photo without being right next to your phone?</summary>
@@ -47,10 +47,35 @@
                 <button onclick="captureImage()">Take Photo</button>
                 <div class="images-container" id="imagesContainer"></div>
             </section>
-        </main>
+        
         <footer>
-            <p>Created with the help of GPT4 and Pico.css</p>
+            <div
+                style = "
+                margin-top: 10px;
+                /* height of the buy me a coffe button */
+                height: 60px; 
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                justify-content: space-between;
+                align-items: center;
+                "
+            >
+
+            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="conradbez" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+            <small>
+                <a href="conradbez.com">conradbez.com</a>
+            </small>
+
+            </div>
+            <div style="margin-top: 10px; text-align: center;">
+                <small >
+                    · created with help from GPT4 and Pico.css ·
+                </small>
+            </div>
+            <br>
         </footer>
+        </main>
         <script>
             const audioElement = document.createElement("audio");
             audioElement.src =
