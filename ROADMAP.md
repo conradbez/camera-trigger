@@ -1,7 +1,9 @@
 
 # Backlog (AKA ChatGPT prompts)
 
-mute the audio when playing starts [running into some issues where this disables pause on iPhones with airpods]
+- mute the audio when playing starts [running into some issues where this disables pause on iPhones with airpods]
+- add timer and multi capture funcionality
+- add video functionality
 
 # Done
 

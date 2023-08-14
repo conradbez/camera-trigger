@@ -77,9 +77,62 @@
         </footer>
         </main>
         <script>
+
+function generateSilentWAV(durationInSeconds) {
+    const sampleRate = 44100; // Samples per second
+    const byteRate = sampleRate * 2 * 2; // Sample rate * block align * bits per sample/8
+    const blockAlign = 2 * 2; // Channels * bits per sample/8
+    const numSamples = sampleRate * durationInSeconds;
+    const dataByteCount = numSamples * 2 * 2; // numSamples * block align
+    const buffer = new ArrayBuffer(44 + dataByteCount); // 44 bytes for header + data
+    const view = new DataView(buffer);
+
+    function writeString(view, offset, string) {
+        for (let i = 0; i < string.length; i++) {
+            view.setUint8(offset + i, string.charCodeAt(i));
+        }
+    }
+
+    // RIFF identifier
+    writeString(view, 0, 'RIFF');
+    // File length minus RIFF identifier and size
+    view.setUint32(4, 36 + dataByteCount, true);
+    // RIFF type
+    writeString(view, 8, 'WAVE');
+    // Format chunk identifier
+    writeString(view, 12, 'fmt ');
+    // Format chunk length
+    view.setUint32(16, 16, true);
+    // Sample format
+    view.setUint16(20, 1, true);
+    // Channel count
+    view.setUint16(22, 2, true);
+    // Sample rate
+    view.setUint32(24, sampleRate, true);
+    // Byte rate
+    view.setUint32(28, byteRate, true);
+    // Block align
+    view.setUint16(32, blockAlign, true);
+    // Bits per sample
+    view.setUint16(34, 16, true);
+    // Data chunk identifier
+    writeString(view, 36, 'data');
+    // Data byte count
+    view.setUint32(40, dataByteCount, true);
+
+    // Create silent samples (0 data for PCM)
+    for (let i = 44; i < buffer.byteLength; i += 2) {
+        view.setInt16(i, 0, true);
+    }
+
+    return new Blob([view], { type: 'audio/wav' });
+}
+
+            const silentWAV = generateSilentWAV(3600); // 3600 seconds of silence
+            const audioURL = URL.createObjectURL(silentWAV);
             const audioElement = document.createElement("audio");
-            audioElement.src =
-                "https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3";
+            audioElement.src = audioURL
+
             document.body.appendChild(audioElement);
             const videoElement = document.getElementById("livePreview");
             const imagesContainer = document.getElementById("imagesContainer");
