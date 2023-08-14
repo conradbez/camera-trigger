@@ -32,7 +32,7 @@
                 <video id="livePreview" width="100%" muted autoplay playsinline></video>
             </article>
             <button id="startFlipBtn">Start Camera <br><small style="font-size: 10px;">This will play some white noise.</small></button>
-            <button onclick="captureImage()">Take Photo</button>
+            <button id="takePhotoBtn" onclick="captureImage()">Take Photo</button>
             <div class="images-container" id="imagesContainer"></div>
         </section>
 
@@ -147,18 +147,17 @@ function generateWhiteNoiseWAV(durationInSeconds) {
 
             startFlipBtn.addEventListener("click", function () {
                 useFrontCamera = !useFrontCamera;
-                startCamera(useFrontCamera);
+                startCamera(useFrontCamera)
+                // .then( ()=> videoElement.scrollIntoView())
                 if (
                     //this indicates we are on the first run and need to start the audio
                     startFlipBtn.innerText.includes("Start Camera")
-
                 ) {
                     audioElement.play();
                     // repeat it so the user can still pause it
                     // this does cause a slight gap where the user can pause music so need to 
                     //  make the generation long enough that this isn't likely
                     audioElement.addEventListener("ended", (e)=>{audioElement.play()} )
-                    
                 }
                 startFlipBtn.innerText = "Flip"
             });
