@@ -28,15 +28,21 @@
                 </small>
                 </p>
             </details>
+            <div id="initialBtns">
+                <small>This will play some sound</small>
+                <button id="frontBtn">Front Camera </button>
+                <button id="backBtn">Back Camera </button>
+                </div>
+
             <article>
                 <video id="livePreview" width="100%" muted autoplay playsinline></video>
             </article>
-            <br><small style="font-size: 10px;">This will play some white noise.</small>
-            <button id="frontBtn">Front Camera </button>
-            <button id="backBtn">Back Camera </button>
-            <button id="takePhotoBtn" hidden onclick="captureImage()">Take Photo</button>
-            <button onclick="location.reload();">Stop</button>
+
+            <div id="opperationBtns" hidden>
+            <button class="contrast" onclick="captureImage()">earbud ⏯️</button>
+            <button id="stopBtn" onclick="location.reload();">Stop</button>
             <div class="images-container" id="imagesContainer"></div>
+            </div>            
         </section>
 
         <footer>
@@ -141,7 +147,8 @@ function generateWhiteNoiseWAV(durationInSeconds) {
                 imageItem.appendChild(downloadLink);
                 imagesContainer.appendChild(imageItem);
             }
-
+            console.log(audioElement)
+            audioElement.addEventListener("volumechange", () => console.log('volume changed'))
             audioElement.addEventListener("pause", function (e) {
                 console.log("Audio paused");
                 console.log(e)
@@ -160,19 +167,14 @@ function generateWhiteNoiseWAV(durationInSeconds) {
                 //  make the generation long enough that this isn't likely
                 audioElement.addEventListener("ended", (e)=>{audioElement.play()} )
                 startCamera(btn, front)
-                backBtn.remove()
-                frontBtn.remove()
-                console.log(document.getElementById("takePhotoBtn"))
-                document.getElementById("takePhotoBtn").removeAttribute("hidden")
-                
+                // backBtn.remove()
+                // frontBtn.remove()
+                document.getElementById("initialBtns").remove()
+                document.getElementById("opperationBtns").removeAttribute("hidden")
+
             });
         }
-
         addEventListenersToButtons(frontBtn, true)
         addEventListenersToButtons(backBtn, false)
-
         </script>
-        <audio
-            src=""></audio>
-
 </body>
