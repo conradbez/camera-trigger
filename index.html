@@ -16,24 +16,24 @@
         <main class="container">
             <section>
                 <!-- <p class="instructions"> -->
-                    <article>
+                <article>
                     <h4>
                         What?
                     </h4>
                     <p class="instructions">
-                    Quick and easy way to snap a photo hands free <br>
-                    By using your headphones' bluetooth capability
-                </p>
+                        Quick and easy way to snap a photo hands free <br>
+                        By using your headphones' bluetooth capability
+                    </p>
                 </article>
 
-                
-                    <article>
+
+                <article>
                     <h4>How?</h4>
                     <p class="instructions">
-                    Select start below. <br>
-                    Then press play/pause on your headphones to capture a
-                    photo.<br>
-                    note: for Airpods, at least one Airpod needs to be in your ear.<br>
+                        Select start below. <br>
+                        Then press play/pause on your headphones to capture a
+                        photo.<br>
+                        note: for Airpods, at least one Airpod needs to be in your ear.<br>
                     </p>
                 </article>
                 <!-- </p> -->
@@ -48,7 +48,7 @@
             </section>
         </main>
         <footer>
-            <p>Created with the help of GPT4 and the Pico.css framework</p>
+            <p>Created with the help of GPT4 and Pico.css</p>
         </footer>
         <script>
             const audioElement = document.createElement("audio");
@@ -103,7 +103,7 @@
                 console.log("Audio paused");
                 captureImage();
             });
-            // startCamera();
+            startCamera();
             startFlipBtn.addEventListener("click", function () {
                 useFrontCamera = !useFrontCamera;
                 startCamera(useFrontCamera);

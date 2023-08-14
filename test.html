@@ -1,0 +1,162 @@
+<html>
+	<head>
+		<title>Error</title>
+		<style>
+			html
+			{
+				font-family : Monospace, Arial;
+				font-size   : 20px;
+			}
+
+			body
+			{
+				margin-top    : 1.6em;
+				margin-bottom : 1.6em;
+				margin-left   : 2.3em;
+				margin-right  : 2.3em;
+			}
+		</style>
+		<style>
+			.print-error-stack__heading
+			{
+				font-size : 140%;
+				color     : #C44100;
+			}
+
+			.print-error-stack__heading--secondary
+			{
+				font-weight : normal;
+				color       : #7f7f7f;
+			}
+
+			.print-error-stack
+			{
+				margin-top : 2em;
+			}
+
+			.print-error-stack__entry
+			{
+				margin-bottom   : 1.5em;
+				list-style-type : none;
+				font-size       : 120%;
+			}
+
+			.print-error-stack__file-path
+			{
+				color         : #7f7f7f;
+				margin-top    : 0.8em;
+			}
+
+			.print-error-stack__file-path-separator
+			{
+				color : #c0c0c0;
+			}
+
+			.print-error-stack__file-name
+			{
+				font-weight : bold;
+			}
+
+			.print-error-stack__line-number
+			{
+			}
+
+			.print-error-stack__colon
+			{
+				color: #9f9f9f;
+			}
+
+			.print-error-stack__method
+			{
+				color: #0091C2;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="print-error-stack__heading">Testing error</h1>
+		<ul class="print-error-stack">
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">parse.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">7</span> <span class="print-error-stack__method">Context.&lt;anonymous&gt;</span>
+				<div class="print-error-stack__file-path">
+					parse.js
+				</div>
+			</li>
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">runnable.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">326</span> <span class="print-error-stack__method">callFn</span>
+				<div class="print-error-stack__file-path">
+					[print-error]<span class="print-error-stack__file-path-separator">/</span>[mocha]<span class="print-error-stack__file-path-separator">/</span>lib<span class="print-error-stack__file-path-separator">/</span>runnable.js
+				</div>
+			</li>
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">runnable.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">319</span> <span class="print-error-stack__method">Test.Runnable.run</span>
+				<div class="print-error-stack__file-path">
+					[print-error]<span class="print-error-stack__file-path-separator">/</span>[mocha]<span class="print-error-stack__file-path-separator">/</span>lib<span class="print-error-stack__file-path-separator">/</span>runnable.js
+				</div>
+			</li>
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">runner.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">422</span> <span class="print-error-stack__method">Runner.runTest</span>
+				<div class="print-error-stack__file-path">
+					[print-error]<span class="print-error-stack__file-path-separator">/</span>[mocha]<span class="print-error-stack__file-path-separator">/</span>lib<span class="print-error-stack__file-path-separator">/</span>runner.js
+				</div>
+			</li>
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">runner.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">528</span>
+				<div class="print-error-stack__file-path">
+					[print-error]<span class="print-error-stack__file-path-separator">/</span>[mocha]<span class="print-error-stack__file-path-separator">/</span>lib<span class="print-error-stack__file-path-separator">/</span>runner.js
+				</div>
+			</li>
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">runner.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">342</span> <span class="print-error-stack__method">next</span>
+				<div class="print-error-stack__file-path">
+					[print-error]<span class="print-error-stack__file-path-separator">/</span>[mocha]<span class="print-error-stack__file-path-separator">/</span>lib<span class="print-error-stack__file-path-separator">/</span>runner.js
+				</div>
+			</li>
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">runner.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">352</span>
+				<div class="print-error-stack__file-path">
+					[print-error]<span class="print-error-stack__file-path-separator">/</span>[mocha]<span class="print-error-stack__file-path-separator">/</span>lib<span class="print-error-stack__file-path-separator">/</span>runner.js
+				</div>
+			</li>
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">runner.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">284</span> <span class="print-error-stack__method">next</span>
+				<div class="print-error-stack__file-path">
+					[print-error]<span class="print-error-stack__file-path-separator">/</span>[mocha]<span class="print-error-stack__file-path-separator">/</span>lib<span class="print-error-stack__file-path-separator">/</span>runner.js
+				</div>
+			</li>
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">runner.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">320</span> <span class="print-error-stack__method">Immediate._onImmediate</span>
+				<div class="print-error-stack__file-path">
+					[print-error]<span class="print-error-stack__file-path-separator">/</span>[mocha]<span class="print-error-stack__file-path-separator">/</span>lib<span class="print-error-stack__file-path-separator">/</span>runner.js
+				</div>
+			</li>
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">timers.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">543</span> <span class="print-error-stack__method">tryOnImmediate</span>
+				<div class="print-error-stack__file-path">
+					timers.js
+				</div>
+			</li>
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">timers.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">523</span> <span class="print-error-stack__method">processImmediate [as _immediateCallback]</span>
+				<div class="print-error-stack__file-path">
+					timers.js
+				</div>
+			</li>
+		</ul>
+		<h1 class="print-error-stack__heading print-error-stack__heading--secondary">From previous event</h1>
+		<ul class="print-error-stack">
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">server.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">153</span>
+				<div class="print-error-stack__file-path">
+					server.js
+				</div>
+			</li>
+			<li class="print-error-stack__entry">
+				<span class="print-error-stack__file-name">match.js</span><span class="print-error-stack__colon">:</span><span class="print-error-stack__line-number">65</span>
+				<div class="print-error-stack__file-path">
+					[qlean-client]<span class="print-error-stack__file-path-separator">/</span>[react-router]<span class="print-error-stack__file-path-separator">/</span>lib<span class="print-error-stack__file-path-separator">/</span>match.js
+				</div>
+			</li>
+		</ul>
+	</body>
+</html>
