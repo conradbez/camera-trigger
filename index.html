@@ -31,9 +31,11 @@
             <article>
                 <video id="livePreview" width="100%" muted autoplay playsinline></video>
             </article>
-            <button id="startFlipBtn">Start Camera <br><small style="font-size: 10px;">This will play some white noise.</small></button>
-            <button id="takePhotoBtn" onclick="captureImage()">Take Photo</button>
-           <button onclick="location.reload();">Stop</button>
+            <br><small style="font-size: 10px;">This will play some white noise.</small>
+            <button id="frontBtn">Front Camera </button>
+            <button id="backBtn">Back Camera </button>
+            <button id="takePhotoBtn" hidden onclick="captureImage()">Take Photo</button>
+            <button onclick="location.reload();">Stop</button>
             <div class="images-container" id="imagesContainer"></div>
         </section>
 
@@ -53,7 +55,7 @@
         </footer>
     </main>
         <script>
-            if (location.protocol !== 'https:') {
+            if (location.protocol !== 'https:' && !location.href.includes('localhost')) {
                 location.replace(`https:${location.href.substring(location.protocol.length)}`);
             }
 const AUDIO_GEN_SEC = 120
@@ -103,8 +105,10 @@ function generateWhiteNoiseWAV(durationInSeconds) {
             const videoElement = document.getElementById("livePreview");
             const imagesContainer = document.getElementById("imagesContainer");
             const readyBtn = document.getElementById("readyBtn");
-            const startFlipBtn = document.getElementById("startFlipBtn");
-            let useFrontCamera = true;
+
+
+            const frontBtn = document.getElementById("frontBtn");
+            const backBtn = document.getElementById("backBtn");
             function startCamera(front = true) {
                 navigator.mediaDevices
                     .getUserMedia({ video: { facingMode: front ? "user" : "environment" } })
@@ -148,27 +152,27 @@ function generateWhiteNoiseWAV(durationInSeconds) {
                     e.srcElement.play()
                 }
             });
-
-            startFlipBtn.addEventListener("click", function () {
-                useFrontCamera = !useFrontCamera;
-                startCamera(useFrontCamera)
-                // .then( ()=> videoElement.scrollIntoView())
-                if (
-                    //this indicates we are on the first run and need to start the audio
-                    startFlipBtn.innerText.includes("Start Camera")
-                ) {
-                    audioElement.play();
-                    // repeat it so the user can still pause it
-                    // this does cause a slight gap where the user can pause music so need to 
-                    //  make the generation long enough that this isn't likely
-                    audioElement.addEventListener("ended", (e)=>{audioElement.play()} )
-                }
-                startFlipBtn.innerText = "Flip"
+            function addEventListenersToButtons(btn, front){
+                btn.addEventListener("click", function () {
+                audioElement.play();
+                // repeat it so the user can still pause it
+                // this does cause a slight gap where the user can pause music so need to 
+                //  make the generation long enough that this isn't likely
+                audioElement.addEventListener("ended", (e)=>{audioElement.play()} )
+                startCamera(btn, front)
+                backBtn.remove()
+                frontBtn.remove()
+                console.log(document.getElementById("takePhotoBtn"))
+                document.getElementById("takePhotoBtn").removeAttribute("hidden")
+                
             });
+        }
 
+        addEventListenersToButtons(frontBtn, true)
+        addEventListenersToButtons(backBtn, false)
 
         </script>
         <audio
-            src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3"></audio>
+            src=""></audio>
 
 </body>
