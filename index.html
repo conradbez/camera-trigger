@@ -108,7 +108,9 @@
                 const imgElement = new Image();
                 imgElement.src = imageUrl;
                 imgElement.style = "width:100%"
-                const downloadLink = document.createElement("button");
+                const downloadButton = document.createElement("button");
+                console.log(downloadButton)
+                const downloadLink = document.createElement("a")
                 downloadLink.href = imageUrl;
                 downloadLink.download = "captured_image.png";
                 downloadLink.innerText = "Download";
@@ -138,7 +140,7 @@
                     startFlipBtn.innerText == "Start Camera"
                 ) {
                     audioElement.play();
-                    audioElement.muted = true; // seems to break everything for some reason
+                    // audioElement.muted = true; // seems to break everything for some reason
                 }
                 startFlipBtn.innerText = "Flip"
             });
