@@ -52,6 +52,9 @@
         </footer>
     </main>
         <script>
+            if (location.protocol !== 'https:') {
+                location.replace(`https:${location.href.substring(location.protocol.length)}`);
+            }
 const AUDIO_GEN_SEC = 120
 function generateWhiteNoiseWAV(durationInSeconds) {
             const sampleRate = 44100;
