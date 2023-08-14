@@ -2,7 +2,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <title>Trigger Photo with Bluetooth Headphones</title>
@@ -11,71 +10,47 @@
 <body>
     <main class="container">
 
-    <header class="container">
+        <header class="container">
             <h3>Remote Photo Trigger with Bluetooth Headphones</h3>
         </header>
-            <section>
-                    <details>
-                        <summary>Need to take a photo without being right next to your phone?</summary>
-                        <p >
-                        <!-- class="instructions" -->
-                            Quick and easy way to snap a photo hands free, <br>
-                            using your wireless headphones
-                        </p>
-                      </details>
+        <section>
+            <details>
+                <summary>Photo without being right next to your phone? Here's how...</summary>
+                <p><small>
+                    <ul role="listbox">
+                        <li>Press the "Start Camera" button below.</li>
+                        <li>We'll play some white noise and snap a photo when you pause it. (You can turn your volume fully down if you prefer.)</li>
+                        <li>Press play/pause on your headphones to capture a photo.</li>
+                        <li>When you hear the white noise briefly pause, there's a photo available for you to download.</li>
+                        <li> For AirPods, at least one needs to be in your ear.</li>
+                        <li>Also: If you don't hear a pause in the noise you might have to press your Airpod again</li>
+                    </ul>
+                </small>
+                </p>
+            </details>
+            <article>
+                <video id="livePreview" width="100%" muted autoplay playsinline></video>
+            </article>
+            <button id="startFlipBtn">Start Camera <br><small style="font-size: 10px;">This will play some white noise.</small></button>
+            <button onclick="captureImage()">Take Photo</button>
+            <div class="images-container" id="imagesContainer"></div>
+        </section>
 
-                    
-
-
-
-                      <details>
-                        <summary>How?</summary>
-                        <p>
-                            <ul role="listbox">
-                                <li>Press "Start Camera" button below</li>
-                                <li>Then press play/pause on your headphones to capture a photo</li>
-                                <li>note: for Airpods, at least one needs to be in your ear</li>
-                              </ul>
-                        </p>
-                      </details>
-                <h2>Live Camera Preview</h2>
-                <!-- <video id="livePreview" width="300" playsinline></video> try to fix preview not working on iPhone -->
-                <article>
-                    <video id="livePreview" width="100%" muted autoplay playsinline></video>
-                </article>
-                <button id="startFlipBtn">Start Camera <br><small style="font-size: 10;">this will play some white noise</small></button>
-                <button onclick="captureImage()">Take Photo</button>
-                <div class="images-container" id="imagesContainer"></div>
-            </section>
-        
         <footer>
-            <div
-                style = "
-                margin-top: 10px;
-                /* height of the buy me a coffe button */
-                height: 60px; 
-                display: flex;
-                flex-direction: row;
-                gap: 10px;
-                justify-content: space-between;
-                align-items: center;
-                "
-            >
-
-            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="conradbez" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
-            <small>
-                <a href="conradbez.com">conradbez.com</a>
-            </small>
-
+            <div style="margin-top: 10px; height: 60px; display: flex; flex-direction: row; gap: 10px; justify-content: space-between; align-items: center;">
+                <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="conradbez" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
+                <small>
+                    <a href="conradbez.com">conradbez.com</a>
+                </small>
             </div>
             <div style="margin-top: 10px; text-align: center;">
-                <small >
-                    · created with help from GPT4 and Pico.css ·
+                <small>
+                    · Created with help from GPT-4 and Pico.css ·
                 </small>
             </div>
             <br>
         </footer>
-        </main>
+    </main>
         <script>
 const AUDIO_GEN_SEC = 120
 function generateWhiteNoiseWAV(durationInSeconds) {
