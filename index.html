@@ -40,7 +40,7 @@
                 <h2>Live Camera Preview</h2>
                 <!-- <video id="livePreview" width="300" playsinline></video> try to fix preview not working on iPhone -->
                 <article>
-                    <video id="livePreview" width="100%" autoplay=""></video>
+                    <video id="livePreview" width="100%" muted autoplay playsinline></video>
                 </article>
                 <button id="startFlipBtn">Start Camera</button>
                 <button onclick="captureImage()">Take Photo</button>
@@ -103,7 +103,7 @@
                 console.log("Audio paused");
                 captureImage();
             });
-            startCamera();
+            // startCamera();
             startFlipBtn.addEventListener("click", function () {
                 useFrontCamera = !useFrontCamera;
                 startCamera(useFrontCamera);
